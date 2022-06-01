@@ -10,13 +10,13 @@ import { AppRoutes } from "../../routes";
 import FormularioLogin from "./FormularioLogin";
 
 const Login = () => {
-  const userData = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userData.user?.uid) navigate(AppRoutes.Home);
+    if (user?.uid) navigate(AppRoutes.Home);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userData]);
+  }, [user]);
 
   return (
     <BackgroundContainer>

@@ -10,7 +10,7 @@ import {
   microsoftProvider,
   twitterProvider,
 } from "../config/firebase";
-import { UserModel } from "../models/UserFirestore";
+import { UserModel } from "../models/UserModel";
 
 interface AuthContextData {
   user: UserModel | null;
@@ -55,6 +55,7 @@ const UserContextProvider = ({ children }: PropsWithChildren<{}>) => {
           email: userData.email,
           name: userData.displayName,
           uid: userData.uid,
+          profilePhoto: userData.providerData[0].photoURL,
         });
       } catch (error) {
         console.error(error);
@@ -65,6 +66,8 @@ const UserContextProvider = ({ children }: PropsWithChildren<{}>) => {
             alert(
               `E-mail já cadastrado. Se for um gmail, clique em "Continuar com Google".`
             );
+          } else if (error.message.includes("popup-closed-by-user")) {
+            return;
           } else alert(error.message);
         }
       }

@@ -1,17 +1,20 @@
 import React from "react";
+import { TaskItemModel } from "../../models/TaskItemModel";
 import * as S from "./styles";
 import TaskItem from "./TaskItem";
 
-const TaskList = () => {
+interface Props {
+  taskListData: TaskItemModel[];
+}
+
+const TaskList = ({ taskListData }: Props) => {
   return (
     <S.TaskListContainer>
-      <TaskItem titulo={"Primeira Task dessa merda asdasdasdasdasdas"} />
-      <TaskItem titulo={"Foda-se mermo"} />
-      <TaskItem titulo={"Trabalhar pra caralho"} />
-      <TaskItem titulo={"Fazer suco de tamarindo"} />
-      <TaskItem titulo={"Fazer suco de tamarindo"} />
-      <TaskItem titulo={"Fazer suco de tamarindo"} />
-      <TaskItem titulo={"Fazer suco de tamarindo"} />
+      {taskListData.length > 0 &&
+        taskListData.map((taskItem) => {
+          return <TaskItem key={taskItem.id} titulo={taskItem.titulo} />;
+        })}
+      {taskListData.length < 1 && <span>Não há tarefas.</span>}
     </S.TaskListContainer>
   );
 };

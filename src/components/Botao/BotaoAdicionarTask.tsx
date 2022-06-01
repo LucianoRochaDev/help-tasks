@@ -3,10 +3,10 @@ import { Colors } from "../../shared/colors";
 import * as S from "./styles";
 
 interface Props {
-  onAdicionar: () => void;
+  onAdicionarTask: () => void;
 }
 
-function BotaoAdicionarTask({ onAdicionar }: Props) {
+function BotaoAdicionarTask({ onAdicionarTask }: Props) {
   return (
     <S.BotaoAdicionar
       sx={{
@@ -21,7 +21,7 @@ function BotaoAdicionarTask({ onAdicionar }: Props) {
         boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         fontSize: "clamp(13px, 1.3vw, 14px)",
       }}
-      onClick={onAdicionar}
+      onClick={onAdicionarTask}
     >
       Adicionar
     </S.BotaoAdicionar>

@@ -1,10 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import FacebookLogin from "../../components/Social/FacebookLogin";
-import GithubLogin from "../../components/Social/GithubLogin";
-import GoogleLogin from "../../components/Social/GoogleLogin";
-import MicrosoftLogin from "../../components/Social/MicrosoftLogin";
-import TwitterLogin from "../../components/Social/TwitterLogin";
+import SocialLogin from "../../components/Social/SocialLogin";
 import { UserContext } from "../../context/UserContext";
 import { Colors } from "../../shared/colors";
 import * as S from "./styles";
@@ -19,25 +15,30 @@ const FormularioLogin = () => {
         <Typography marginY={"12px"} fontWeight={500}>
           {`Inicie com seu login social ;)`}
         </Typography>
-        <GoogleLogin
+        <SocialLogin
           onClick={() => Login("google")}
           backgroundColor={Colors.social.google}
+          socialProvider="Google"
         />
-        <FacebookLogin
+        <SocialLogin
           onClick={() => Login("facebook")}
           backgroundColor={Colors.social.facebook}
+          socialProvider="Facebook"
         />
-        <TwitterLogin
+        <SocialLogin
           onClick={() => Login("twitter")}
           backgroundColor={Colors.social.twitter}
+          socialProvider="Twitter"
         />
-        <GithubLogin
+        <SocialLogin
           onClick={() => Login("github")}
           backgroundColor={Colors.social.github}
+          socialProvider="Github"
         />
-        <MicrosoftLogin
+        <SocialLogin
           onClick={() => Login("microsoft")}
           backgroundColor={Colors.social.microsoft}
+          socialProvider="Microsoft"
         />
       </S.FormContainer>
       <Typography
