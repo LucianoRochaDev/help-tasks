@@ -9,6 +9,7 @@ interface Props {
 function BotaoAdicionarTask({ onAdicionarTask }: Props) {
   return (
     <S.BotaoAdicionar
+      onClick={onAdicionarTask}
       sx={{
         marginLeft: "20px",
         padding: "0 20px",
@@ -21,7 +22,6 @@ function BotaoAdicionarTask({ onAdicionarTask }: Props) {
         boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         fontSize: "clamp(13px, 1.3vw, 14px)",
       }}
-      onClick={onAdicionarTask}
     >
       Adicionar
     </S.BotaoAdicionar>

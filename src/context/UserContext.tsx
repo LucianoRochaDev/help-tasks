@@ -1,5 +1,12 @@
 import { signInWithPopup, signOut, User } from "firebase/auth";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import React, { createContext, PropsWithChildren, useState } from "react";
 import {
   auth,
@@ -37,13 +44,14 @@ const UserContextProvider = ({ children }: PropsWithChildren<{}>) => {
       try {
         const res = await signInWithPopup(auth, alternativaSocial);
         userData = res.user;
+
         const userQuery = query(
           collection(firestoreDb, "users"),
           where("uid", "==", userData.uid)
         );
         const docsResponse = await getDocs(userQuery);
         if (docsResponse.docs.length === 0) {
-          await addDoc(collection(firestoreDb, "users"), {
+          await setDoc(doc(firestoreDb, "users", userData.uid), {
             authProvider: userData.providerId,
             email: userData.email,
             name: userData.displayName,
@@ -67,6 +75,8 @@ const UserContextProvider = ({ children }: PropsWithChildren<{}>) => {
               `E-mail já cadastrado. Se for um gmail, clique em "Continuar com Google".`
             );
           } else if (error.message.includes("popup-closed-by-user")) {
+            return;
+          } else if (error.message.includes("auth/cancelled-popup-request")) {
             return;
           } else alert(error.message);
         }

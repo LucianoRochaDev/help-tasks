@@ -4,14 +4,22 @@ import * as S from "./styles";
 interface Props {
   inputAdicionarTask: string;
   setInputAdicionarTask: React.Dispatch<React.SetStateAction<string>>;
+  onAdicionarTask: () => void;
 }
 
-const TodoInput = ({ inputAdicionarTask, setInputAdicionarTask }: Props) => {
+const TodoInput = ({
+  inputAdicionarTask,
+  setInputAdicionarTask,
+  onAdicionarTask,
+}: Props) => {
   return (
     <S.CustomInput
       value={inputAdicionarTask}
       onChange={(event) => {
         setInputAdicionarTask(event.target.value);
+      }}
+      onKeyDown={(event) => {
+        event.key === "Enter" && onAdicionarTask();
       }}
       label="Nova Tarefa"
       type="text"

@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user?.uid) navigate(AppRoutes.Home);
+    if (user?.uid) navigate(AppRoutes.TodoList(user.uid));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 

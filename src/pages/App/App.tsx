@@ -1,26 +1,23 @@
-import React, { useContext } from "react";
-import { Route, Routes } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { AppRoutes } from "../../routes";
 import ProtectedRoute from "../../routes/ProtectedRoute";
 import Login from "../Login/Login";
 import PaginaNaoEncontrada from "../PaginaNaoEncontrada/PaginaNaoEncontrada";
-import Dashboard from "../TodoList/TodoList";
+import TaskDetalhes from "../TaskDetalhes/TaskDetalhes";
+import TodoList from "../TodoList/TodoList";
 import "./App.css";
 
 const App = () => {
-  const user = useContext(UserContext);
   return (
     <Routes>
-      <Route path={AppRoutes.Login} element={<Login />} />
       <Route
         path={AppRoutes.Home}
-        element={
-          <ProtectedRoute user={user.user ? true : false}>
-            <Dashboard />
-          </ProtectedRoute>
-        }
+        element={<Navigate to={AppRoutes.Login} replace />}
       />
+      <Route path={AppRoutes.Login} element={<Login />} />
+      <Route path={AppRoutes.TodoList()} element={<TodoList />} />
+      <Route path={AppRoutes.TaskDetalhes()} element={<TaskDetalhes />} />
       <Route path="*" element={<PaginaNaoEncontrada />} />
     </Routes>
   );
