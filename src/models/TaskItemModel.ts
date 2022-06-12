@@ -1,7 +1,7 @@
 export interface TaskItemModel {
   id: string;
   titulo: string;
-  descricao: string | null | undefined;
+  notas: string | null | undefined;
   dataCriacao: Date | string;
   dispararEmail: boolean;
   dispararWhatsapp: boolean;

@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import BotaoAdicionarTask from "../../components/Botao/BotaoAdicionarTask";
@@ -44,6 +44,13 @@ const TodoList = () => {
   };
 
   useEffect(() => {
+    if (!user || !user.uid) {
+      navigate(AppRoutes.Login);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     carregarTaskList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
@@ -53,7 +60,7 @@ const TodoList = () => {
       const newTaskData: TaskItemModel = {
         dataCriacao: new Date().toISOString(),
         dataDisparo: "",
-        descricao: "",
+        notas: "",
         dispararEmail: false,
         dispararWhatsapp: false,
         id: uuidv4(),
