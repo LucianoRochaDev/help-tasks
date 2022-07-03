@@ -15,7 +15,7 @@ export const Colors = {
   black: "#000000",
 
   social: {
-    facebook: "#386098",
+    facebook: "#3971bf",
     google: "#e03444",
     github: "#484444",
     microsoft: "#2874ec",

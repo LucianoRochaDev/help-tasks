@@ -17,22 +17,23 @@ import TaskList from "./TaskList";
 
 const TodoList = () => {
   const [inputAdicionarTask, setInputAdicionarTask] = useState("");
-  const [taskListData, setTaskListData] = useState<TaskItemModel[]>();
+  const [taskListData, setTaskListData] = useState<TaskItemModel[] | null>();
 
-  const { user } = useContext(UserContext);
+  const { userCtx: user } = useContext(UserContext);
   const { obterTaskList, adicionarTask } = useTasksService();
 
   useEffect(() => {
     const carregarTaskList = async () => {
       if (user) {
         const obterLista = await obterTaskList(user.uid);
-        setTaskListData(Object.values(obterLista.val()));
+        obterLista.val()
+          ? setTaskListData(Object.values(obterLista.val()))
+          : setTaskListData(null);
       }
     };
     carregarTaskList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(taskListData);
 
   const onAdicionarTask = () => {
     if (inputAdicionarTask && user) {
@@ -69,10 +70,12 @@ const TodoList = () => {
             />
             <BotaoAdicionarTask onAdicionarTask={onAdicionarTask} />
           </Box>
-          {taskListData ? (
+          {taskListData !== undefined ? (
             <TaskList taskListData={taskListData} />
           ) : (
-            <CircularProgress />
+            <S.LoadingTasksContainer>
+              <CircularProgress />
+            </S.LoadingTasksContainer>
           )}
         </S.TodoListContainer>
       </MainContainerTodoList>

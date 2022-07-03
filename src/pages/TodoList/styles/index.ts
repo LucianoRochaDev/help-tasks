@@ -44,3 +44,12 @@ export const TaskItemContainer = styled.div`
   background-color: ${Colors.primaryTints.tint5};
   box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 8px;
 `;
+
+export const LoadingTasksContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+`;

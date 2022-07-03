@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import styled from "styled-components";
 import { Colors } from "../../../shared/colors";
 
-export const CustomInput = styled(TextField)`
+export const DarkInput = styled(TextField)`
   & .MuiInput-underline,
   .MuiInput-underline:before,
   .MuiInput-underline:after {
@@ -13,5 +13,20 @@ export const CustomInput = styled(TextField)`
   & label,
   label.Mui-focused {
     color: ${Colors.primaryTints.tint4};
+  }
+`;
+
+export const LightInput = styled(TextField)`
+  & .MuiInput-underline,
+  .MuiInput-underline:before,
+  .MuiInput-underline:after {
+    border-bottom-color: ${Colors.black};
+    border-color: ${Colors.black};
+    color: ${Colors.black};
+  }
+  & label,
+  label.Mui-focused {
+    color: ${Colors.black};
+    font-weight: 500;
   }
 `;

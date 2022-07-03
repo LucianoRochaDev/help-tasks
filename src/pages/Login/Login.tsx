@@ -10,7 +10,7 @@ import { AppRoutes } from "../../routes";
 import FormularioLogin from "./FormularioLogin";
 
 const Login = () => {
-  const { user } = useContext(UserContext);
+  const { userCtx: user } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {

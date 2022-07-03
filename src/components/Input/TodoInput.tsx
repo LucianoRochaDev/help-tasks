@@ -8,7 +8,7 @@ interface Props {
 
 const TodoInput = ({ inputAdicionarTask, setInputAdicionarTask }: Props) => {
   return (
-    <S.CustomInput
+    <S.DarkInput
       value={inputAdicionarTask}
       onChange={(event) => {
         setInputAdicionarTask(event.target.value);

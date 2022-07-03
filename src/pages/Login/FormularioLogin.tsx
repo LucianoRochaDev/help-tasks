@@ -6,7 +6,7 @@ import { Colors } from "../../shared/colors";
 import * as S from "./styles";
 
 const FormularioLogin = () => {
-  const { Login } = useContext(UserContext);
+  // const { Login } = useContext(UserContext);
 
   return (
     <Box>
@@ -15,7 +15,7 @@ const FormularioLogin = () => {
         <Typography marginY={"12px"} fontWeight={500}>
           {`Inicie com seu login social ;)`}
         </Typography>
-        <SocialLogin
+        {/* <SocialLogin
           onClick={() => Login("google")}
           backgroundColor={Colors.social.google}
           socialProvider="Google"
@@ -39,7 +39,7 @@ const FormularioLogin = () => {
           onClick={() => Login("microsoft")}
           backgroundColor={Colors.social.microsoft}
           socialProvider="Microsoft"
-        />
+        /> */}
       </S.FormContainer>
       <Typography
         marginY={"10px"}

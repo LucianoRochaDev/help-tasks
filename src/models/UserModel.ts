@@ -5,3 +5,8 @@ export interface UserModel {
   uid: string;
   profilePhoto: string | null;
 }
+
+export interface UserCadastro {
+  email: string;
+  senha: string;
+}

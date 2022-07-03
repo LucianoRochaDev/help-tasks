@@ -11,7 +11,7 @@ function BotaoAdicionarTask({ onAdicionarTask }: Props) {
     <S.BotaoAdicionar
       sx={{
         marginLeft: "20px",
-        padding: "0 20px",
+        padding: "2.5px 20px 0 20px",
         textTransform: "capitalize",
         color: Colors.primary,
         backgroundColor: Colors.primaryTints.tint3,

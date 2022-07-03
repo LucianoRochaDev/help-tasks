@@ -18,7 +18,7 @@ const ToolbarTodoList = () => {
     null
   );
 
-  const { user, Logout } = useContext(UserContext);
+  const { userCtx: user } = useContext(UserContext);
 
   const openProfile = Boolean(anchorElement);
 
@@ -39,17 +39,12 @@ const ToolbarTodoList = () => {
           justifyContent="center"
           marginRight="22px"
         >
-          {/* <BotaoLogout onLogout={onLogout} /> */}
           <IconButton onClick={handleClick}>
-            {user && user.profilePhoto ? (
-              <Avatar alt="" src={user.profilePhoto} />
-            ) : (
-              <Avatar
-                alt=""
-                src={mdiAccountCircle}
-                sx={{ backgroundColor: Colors.primaryTints.tint2 }}
-              />
-            )}
+            <Avatar
+              alt=""
+              src={mdiAccountCircle}
+              sx={{ backgroundColor: Colors.primaryTints.tint2 }}
+            />
           </IconButton>
         </Box>
       </S.Header>
@@ -59,7 +54,7 @@ const ToolbarTodoList = () => {
         onClose={fecharProfileMenu}
         onClick={fecharProfileMenu}
       >
-        <MenuItem onClick={Logout}>
+        <MenuItem onClick={() => {}}>
           <ListItemIcon>
             <Icon
               path={mdiTableAccount}
@@ -69,7 +64,7 @@ const ToolbarTodoList = () => {
           </ListItemIcon>
           Histórico
         </MenuItem>
-        <MenuItem onClick={Logout}>
+        <MenuItem onClick={() => {}}>
           <ListItemIcon>
             <Icon
               path={mdiLogoutVariant}
