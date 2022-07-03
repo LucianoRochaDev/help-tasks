@@ -6,12 +6,15 @@ import * as S from "./styles";
 
 interface Props {
   titulo: string;
+  removerTask: () => void;
+  onTaskDetalhes: () => void;
 }
 
-const TaskItem = ({ titulo }: Props) => {
+const TaskItem = ({ titulo, removerTask, onTaskDetalhes }: Props) => {
   return (
     <S.TaskItemContainer>
       <S.ButtonBaseTask
+        onClick={onTaskDetalhes}
         sx={{
           display: "flex",
           justifyContent: "flex-start",
@@ -32,8 +35,8 @@ const TaskItem = ({ titulo }: Props) => {
         justifyContent="space-evenly"
         pl="3px"
       >
-        <ItemIconButton path={mdiCheckBold} />
-        <ItemIconButton path={mdiDeleteForever} />
+        <ItemIconButton path={mdiCheckBold} onClick={() => {}} />
+        <ItemIconButton path={mdiDeleteForever} onClick={removerTask} />
       </Box>
     </S.TaskItemContainer>
   );

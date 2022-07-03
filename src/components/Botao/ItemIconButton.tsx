@@ -5,12 +5,14 @@ import { Colors } from "../../shared/colors";
 
 interface Props {
   path: string;
+  onClick: () => void;
 }
 
-const ItemIconButton = ({ path }: Props) => {
+const ItemIconButton = ({ path, onClick }: Props) => {
   return (
     <IconButton
       size="small"
+      onClick={onClick}
       sx={{
         height: "38px",
         width: "38px",
